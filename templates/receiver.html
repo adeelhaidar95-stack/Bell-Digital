@@ -15,15 +15,12 @@
 
 <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 <script>
-  const socket = io();
   const sound = document.getElementById("sound");
-
-  // unlock audio (wajib di browser)
   document.body.addEventListener("click", () => {
     sound.play().then(() => {
       sound.pause();
       sound.currentTime = 0;
-      console.log("Audio unlocked");
+      console.log("Audio siap beraksi!");
     });
   }, { once: true });
 
@@ -31,7 +28,11 @@
   const channel = pusher.subscribe('bell-channel');
 
   channel.bind('bell-event', function(data) {
-    alert("BEL BERBUNYI: " + data.message);
+    console.log("Sinyal diterima:", data.message);
+    
+    sound.play().catch(e => console.log("Klik layar dulu agar suara muncul!"));
+    
+    alert("BEL BUNYI: " + data.message);
   });
 </script>
 

@@ -15,14 +15,20 @@
   </div>
 <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 <script>
-  // connect ke server (pakai host & port yang sama)
-  const socket = io();
 
-  fetch('/push-bell', { method: 'POST' })
+  const bellButton = document.getElementById("bell");
+
+  bellButton.addEventListener("click", () => {
+    console.log("Tombol ditekan, mengirim sinyal...");
+
+    fetch('/push-bell', { method: 'POST' })
       .then(response => {
-        if (response.ok) console.log("BEL BERHASIL DIKIRIM");
+        if (response.ok) {
+          console.log("BEL BERHASIL DIKIRIM KE SERVER");
+        }
       })
-      .catch(err => console.error("Error:", err));
+      .catch(err => console.error("Gagal mengirim:", err));
+  });
 </script>
 
 </body>
