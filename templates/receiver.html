@@ -8,8 +8,7 @@
 <body>
 
 <h1>📡 RECEIVER</h1>
-<p>Menunggu bel...</p>
-<p><b>Klik sekali di halaman ini agar suara bisa diputar</b></p>
+<p><b>Click on this page to enable the sound</b></p>
 
 <audio id="sound" src="/static/chicken.mp3"></audio>
 
@@ -20,7 +19,6 @@
     sound.play().then(() => {
       sound.pause();
       sound.currentTime = 0;
-      console.log("Audio siap beraksi!");
     });
   }, { once: true });
 
@@ -32,7 +30,6 @@
     
     sound.play().catch(e => console.log("Klik layar dulu agar suara muncul!"));
     
-    alert("BEL BUNYI: " + data.message);
   });
 </script>
 
